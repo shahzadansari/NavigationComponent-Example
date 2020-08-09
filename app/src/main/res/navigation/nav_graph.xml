@@ -8,23 +8,27 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.navigationcomponent.MainFragment"
-        android:label="fragment_main"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_main" >
+
         <action
             android:id="@+id/action_mainFragment_to_chooseRecipientFragment"
             app:destination="@id/chooseRecipientFragment" />
+
         <action
             android:id="@+id/action_mainFragment_to_viewTransactionFragment"
             app:destination="@id/viewTransactionFragment" />
+
         <action
             android:id="@+id/action_mainFragment_to_viewBalanceFragment"
             app:destination="@id/viewBalanceFragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/chooseRecipientFragment"
         android:name="com.example.navigationcomponent.ChooseRecipientFragment"
-        android:label="fragment_choose_recipient"
+        android:label="Choose Recipient"
         tools:layout="@layout/fragment_choose_recipient" >
         <action
             android:id="@+id/action_chooseRecipientFragment_to_specifyAmountFragment"
@@ -34,7 +38,7 @@
     <fragment
         android:id="@+id/specifyAmountFragment"
         android:name="com.example.navigationcomponent.SpecifyAmountFragment"
-        android:label="fragment_specify_amount"
+        android:label="Specify Amount"
         tools:layout="@layout/fragment_specify_amount" >
         <action
             android:id="@+id/action_specifyAmountFragment_to_confirmationFragment"
@@ -44,18 +48,18 @@
     <fragment
         android:id="@+id/confirmationFragment"
         android:name="com.example.navigationcomponent.ConfirmationFragment"
-        android:label="fragment_confirmation"
+        android:label="Confirmation"
         tools:layout="@layout/fragment_confirmation" />
 
     <fragment
         android:id="@+id/viewTransactionFragment"
         android:name="com.example.navigationcomponent.ViewTransactionFragment"
-        android:label="fragment_view_transaction"
+        android:label="Transactions"
         tools:layout="@layout/fragment_view_transaction" />
 
     <fragment
         android:id="@+id/viewBalanceFragment"
         android:name="com.example.navigationcomponent.ViewBalanceFragment"
-        android:label="fragment_view_balance"
+        android:label="Balance"
         tools:layout="@layout/fragment_view_balance" />
 </navigation>
