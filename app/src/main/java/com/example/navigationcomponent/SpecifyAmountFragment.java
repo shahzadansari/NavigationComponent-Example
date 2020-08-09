@@ -5,16 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 public class SpecifyAmountFragment extends Fragment {
     private NavController navController;
     private Button sendButton, cancelButton;
+    private EditText editTextAmount;
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,13 +30,19 @@ public class SpecifyAmountFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+        editTextAmount = view.findViewById(R.id.input_amount);
         sendButton = view.findViewById(R.id.send_btn);
         cancelButton = view.findViewById(R.id.cancel_btn);
+
+        final String recipient = SpecifyAmountFragmentArgs.fromBundle(getArguments()).getRecipientName();
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.action_specifyAmountFragment_to_confirmationFragment    );
+                int amount = Integer.parseInt(editTextAmount.getText().toString());
+                NavDirections navDirections = SpecifyAmountFragmentDirections
+                        .actionSpecifyAmountFragmentToConfirmationFragment(recipient, amount);
+                navController.navigate(navDirections);
             }
         });
 

@@ -5,16 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 public class ChooseRecipientFragment extends Fragment {
     private NavController navController;
     private Button nextButton, cancelButton;
+    private EditText editTextRecipient;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,13 +31,17 @@ public class ChooseRecipientFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = Navigation.findNavController(view);
+        editTextRecipient = view.findViewById(R.id.input_recipient);
         nextButton = view.findViewById(R.id.next_btn);
         cancelButton = view.findViewById(R.id.cancel_btn);
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                navController.navigate(R.id.action_chooseRecipientFragment_to_specifyAmountFragment);
+                String recipientName = editTextRecipient.getText().toString();
+                NavDirections navDirections = ChooseRecipientFragmentDirections
+                        .actionChooseRecipientFragmentToSpecifyAmountFragment(recipientName);
+                navController.navigate(navDirections);
             }
         });
 

@@ -66,6 +66,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <argument
+            android:name="recipientName"
+            app:argType="string" />
 
     </fragment>
 
@@ -73,7 +76,14 @@
         android:id="@+id/confirmationFragment"
         android:name="com.example.navigationcomponent.ConfirmationFragment"
         android:label="Confirmation"
-        tools:layout="@layout/fragment_confirmation" />
+        tools:layout="@layout/fragment_confirmation" >
+        <argument
+            android:name="recipientName"
+            app:argType="string" />
+        <argument
+            android:name="amount"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/viewTransactionFragment"
